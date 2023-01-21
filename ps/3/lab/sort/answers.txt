@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: because when i sorted the sorted10000.txt file, sort1 was a lot faster than sort3. and since bubble sort has big omega of n and that happens when the list is already sorted. This means that the faster program is the one that is bubble sort. Because big omega of selection sort is n^2 so it would take longer if it is selection sort.
+
+sort2 uses: merge sort
+
+How do you know?: because when i sorted the random50000.txt file, it was super fast compared to the other sorts. Sort2 took 1/2 of a second, whilst the other ones took more than 3 seconds.
+
+sort3 uses: selection sort
+
+How do you know?: it takes longer to sort sorted10000.txt than sort1, i know that big omega of selection sort should be n^2, so if sort1 is faster, that means that sort3 is slower, also meaning that this is selection sort because its slower and the same as big O

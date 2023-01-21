@@ -1,0 +1,10 @@
+{
+    "gitdoc.enabled": true,
+    "files.associations": {
+        "string": "c",
+        "functional": "c",
+        "*.tcc": "c",
+        "string_view": "c",
+        "algorithm": "c"
+    }
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>How much does a dog eat in a day?</h3>
+                <div id="q1feedback" hidden="true"></div>
+                <button type="button" id="q1"> 3 oz </button>
+                <button type="button" id="q1"> 2 pounds </button>
+                <button type="button" id="q1"> 12 pounds </button>
+                <button type="button" id="q1"> 8 kg </button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>When is the last day of the CS50 course?</h3>
+                <div id="q2feedback" hidden="true"></div>
+                <form>
+                    <input type="text" id="q2text" autocomplete="off">
+                    <input type="submit" id="q2submit">
+                </form>
+            </div>
+        </div>
+        <script>
+            // TODO: Add code to check answers to questions
+            // define the answers for q1 and q2
+            let answers = [ "2 pounds", "december 31st" ]
+
+            // get the dom elements of the correct / incorrect text
+            let q1feedback = document.querySelector("#q1feedback")
+            let q2feedback = document.querySelector("#q2feedback")
+
+            // define function for the first question
+            function onFirstQuestion(e)
+            {
+                // gets the button that was pressed fron the event
+                let button = e.path[0]
+                // gets the user input from the button text
+                let user_picked = button.innerText
+                // unhides the feedback
+                q1feedback.hidden = false
+                if (answers[0] == user_picked)
+                {
+                    // if the user picked the right answer then it will update the html to match the right answer
+                    q1feedback.style.color = 'green'
+                    q1feedback.innerText = "Correct!"
+                    button.style.backgroundColor = "green"
+                }
+                else
+                {
+                    // it will put everything red and tell the user they got it wrong if they pressed the wrong one
+                    q1feedback.style.color = 'red'
+                    q1feedback.innerText = "Incorrect"
+                    button.style.backgroundColor = "red"
+                }
+            }
+
+            // loop through all the buttons with the q1 tag
+            for (let button of document.querySelectorAll("#q1").values())
+            {
+                // add a listener for the first question function
+                button.addEventListener("click", onFirstQuestion)
+            }
+
+            // adds a listener onto the submit button on the 2nd part of the trivia quiz
+            document.querySelector("#q2submit").addEventListener("click", function(e) {
+                // gets the text and user input to check the answer
+                let text = document.querySelector("#q2text")
+                let user_input = text.value.toLowerCase()
+
+                // unhides the feedback
+                q2feedback.hidden = false
+                if (user_input == answers[1])
+                {
+                    // if the user got it right then change the style and tell the user they got it right
+                    text.style.backgroundColor = 'green'
+                    q2feedback.style.color = 'green'
+                    q2feedback.innerText = "Correct!"
+                }
+                else
+                {
+                    // if wrong do the same but make it red and tell them they got it wrong
+                    text.style.backgroundColor = 'red'
+                    q2feedback.style.color = 'red'
+                    q2feedback.innerText = "Incorrect"
+                }
+
+                // prevents the page from being reloaded
+                e.preventDefault()
+            })
+        </script>
+    </body>
+</html>

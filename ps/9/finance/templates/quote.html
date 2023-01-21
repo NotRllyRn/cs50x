@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    {% if information %}
+        <h1 class="display-1">{{information["symbol"]}}</h1>
+        <h1 class="display-4">{{information["name"]}}</h1>
+
+        <h1 class="display-5">Price: {{information["price"]}}</h1>
+        <form action="/quote">
+            <button class="btn btn-primary" type="submit">Go back</button>
+        </form>
+    {% else %}
+        <form action="/quote" method="post">
+            <div class="mb-3">
+                <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="symbol" name="symbol" placeholder="Stock Symbol" type="text">
+            </div>
+            <button class="btn btn-primary" type="submit">Get Quote</button>
+        </form>
+    {% endif %}
+{% endblock %}
